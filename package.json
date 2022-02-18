@@ -9,7 +9,8 @@
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
     "server": "nodemon server",
-    "client": "npm start --prefix client"
+    "client": "npm start --prefix client",
+    "dev": "concurrently \"npm run server\" \"npm run client\""
   },
   "repository": {
     "type": "git",
@@ -22,6 +23,7 @@
   },
   "homepage": "https://github.com/LeonTenko/freshworks-full-stack-selection-test#readme",
   "dependencies": {
+    "concurrently": "^7.0.0",
     "config": "^3.3.7",
     "express": "^4.17.3",
     "mongoose": "^6.2.2"
