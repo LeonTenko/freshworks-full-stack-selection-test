@@ -3,10 +3,12 @@
   "description": "You have been asked to develop a small application for FreshWorks Studio. We want to learn about how you think, communicate and code.",
   "version": "1.0.0",
   "main": "server.js",
-  "devDependencies": {},
+  "devDependencies": {
+    "nodemon": "^2.0.15"
+  },
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "start": "node server"
+    "start": "nodemon server"
   },
   "repository": {
     "type": "git",
