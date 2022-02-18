@@ -1,9 +1,12 @@
 import "./homepage.styles.scss";
 
+// Component imports
+import Collection from "../../components/collection/collection.component";
+
 const HomePage = () => {
   return (
     <div>
-      <h1>Home Page</h1>
+      <Collection />
     </div>
   );
 };
