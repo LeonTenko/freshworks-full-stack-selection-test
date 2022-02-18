@@ -1,0 +1,23 @@
+{
+  "name": "freshworks-full-stack-selection-test",
+  "description": "You have been asked to develop a small application for FreshWorks Studio. We want to learn about how you think, communicate and code.",
+  "version": "1.0.0",
+  "main": "server.js",
+  "devDependencies": {},
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/LeonTenko/freshworks-full-stack-selection-test.git"
+  },
+  "author": "Yaroslav Leontenko",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/LeonTenko/freshworks-full-stack-selection-test/issues"
+  },
+  "homepage": "https://github.com/LeonTenko/freshworks-full-stack-selection-test#readme",
+  "dependencies": {
+    "express": "^4.17.3"
+  }
+}
