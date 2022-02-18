@@ -21,6 +21,7 @@
   },
   "homepage": "https://github.com/LeonTenko/freshworks-full-stack-selection-test#readme",
   "dependencies": {
+    "config": "^3.3.7",
     "express": "^4.17.3",
     "mongoose": "^6.2.2"
   }
