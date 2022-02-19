@@ -10,18 +10,13 @@ import FormInput from "../form-input/form-input.component";
 import CustomButton from "../custom-button/custom-button.component";
 
 const DuckFeedingForm = ({ reRenderParent }) => {
-  // For POST testing purposes
-  const defaultValues = {
-    _id: "",
-    feedingLocation: "test",
-  };
-
   const [duckFormData, setDuckFormData] = React.useState({
+    _id: "",
     foodType: "",
     duckCount: "",
     foodAmountKg: "",
+    feedingLocation: "",
     feedingTime: null,
-    ...defaultValues,
   });
 
   // Just logging to see if the state is correct, remove later
@@ -124,11 +119,20 @@ const DuckFeedingForm = ({ reRenderParent }) => {
           handleChange={handleChange}
         />
         <FormInput
+          type="text"
+          name="feedingLocation"
+          value={duckFormData.feedingLocation}
+          required
+          label="Location"
+          helperText="Where did you feed the ducks?"
+          handleChange={handleChange}
+        />
+        <FormInput
           type="datePicker"
           name="feedingTime"
           value={duckFormData.feedingTime}
           required
-          label="Feeding Time"
+          label="Date/Time"
           helperText="When did you feed the ducks?"
           handleChange={handleChange}
         />
