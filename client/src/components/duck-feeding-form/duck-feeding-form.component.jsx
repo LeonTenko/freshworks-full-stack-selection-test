@@ -6,21 +6,51 @@ import FormInput from "../form-input/form-input.component";
 import CustomButton from "../custom-button/custom-button.component";
 
 const DuckFeedingForm = () => {
-  const [duckFormData, setDuckFormData] = React.useState({
+  // For POST testing purposes
+  const defaultValues = {
     _id: "",
-    feedingTime: null,
+    feedingTime: Date.now(),
+    feedingLocation: "test",
+    duckCount: 1,
+    foodAmountKg: 1,
+  };
+
+  const [duckFormData, setDuckFormData] = React.useState({
     foodType: "",
-    feedingLocation: "",
-    duckCount: 0,
-    foodAmountKg: 0,
+    ...defaultValues,
   });
+
   const handleSubmit = (e) => {
     e.preventDefault();
     console.log(duckFormData);
+
+    // POST to api/duckfeedings
+    var body = JSON.stringify(duckFormData);
+
+    const asyncCall = async () => {
+      const res = await fetch("/api/duckfeedings", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        mode: "cors",
+        cache: "no-cache",
+        credentials: "same-origin",
+        body: body,
+      });
+      if (res.status === 200) console.log("POST successful");
+    };
+
+    try {
+      asyncCall();
+    } catch (err) {
+      console.log("API ERROR: " + err);
+    }
   };
 
   const handleChange = (e) => {
-    setDuckFormData({ [e.target.name]: e.target.value });
+    const { name, value } = e.target;
+    setDuckFormData({ [name]: value, ...defaultValues });
   };
 
   return (
