@@ -1,6 +1,9 @@
 import React from "react";
 import "./collection.styles.scss";
 
+// Component imports
+import DuckFeedingItem from "../duck-feeding-item/duck-feeding-item.component";
+
 const Collection = () => {
   const [duckData, setDuckData] = React.useState(null);
 
@@ -23,29 +26,11 @@ const Collection = () => {
   return (
     <div>
       {duckData ? (
-        duckData.map(
-          ({
-            _id,
-            feedingTime,
-            foodType,
-            feedingLocation,
-            duckCount,
-            foodAmountKg,
-          }) => {
-            return (
-              <div key={_id}>
-                <p>{_id}</p>
-                <p>{feedingTime}</p>
-                <p>{foodType}</p>
-                <p>{feedingLocation}</p>
-                <p>{duckCount}</p>
-                <p>{foodAmountKg}</p>
-              </div>
-            );
-          }
-        )
+        duckData.map(({ _id, ...otherProps }) => (
+          <DuckFeedingItem key={_id} _id={_id} {...otherProps} />
+        ))
       ) : (
-        <p>The database is empty, please add some entries</p>
+        <p>The database is empty, please add some entries.</p>
       )}
     </div>
   );
