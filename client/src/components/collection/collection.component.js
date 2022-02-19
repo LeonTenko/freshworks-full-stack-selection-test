@@ -3,6 +3,7 @@ import "./collection.styles.scss";
 
 // Component imports
 import DuckFeedingItem from "../duck-feeding-item/duck-feeding-item.component";
+import DuckFeedingForm from "../duck-feeding-form/duck-feeding-form.component";
 
 const Collection = () => {
   const [duckData, setDuckData] = React.useState(null);
@@ -25,6 +26,7 @@ const Collection = () => {
 
   return (
     <div>
+      <DuckFeedingForm />
       {duckData ? (
         duckData.map(({ _id, ...otherProps }) => (
           <DuckFeedingItem key={_id} _id={_id} {...otherProps} />
