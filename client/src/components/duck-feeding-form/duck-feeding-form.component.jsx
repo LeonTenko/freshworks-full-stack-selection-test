@@ -14,13 +14,13 @@ const DuckFeedingForm = ({ reRenderParent }) => {
   const defaultValues = {
     _id: "",
     feedingLocation: "test",
-    duckCount: 1,
-    foodAmountKg: 1,
   };
 
   const [duckFormData, setDuckFormData] = React.useState({
     foodType: "",
-    feedingTime: new Date(),
+    duckCount: "",
+    foodAmountKg: "",
+    feedingTime: null,
     ...defaultValues,
   });
 
@@ -76,6 +76,20 @@ const DuckFeedingForm = ({ reRenderParent }) => {
     setDuckFormData({ ...duckFormData, [name]: value });
   };
 
+  // Allow only inputs within specified pattern
+  // Only INT for ducks in our case
+  const handleValidation = (e) => {
+    let key = "";
+    e.type === "paste"
+      ? (key = e.clipboardData.getData("text/plain"))
+      : (key = e.key);
+
+    var intRegex = new RegExp(e.currentTarget.dataset.pattern);
+    if (!intRegex.test(key)) {
+      e.preventDefault();
+    }
+  };
+
   return (
     <div className="">
       <Box component="form" onSubmit={handleSubmit}>
@@ -89,12 +103,32 @@ const DuckFeedingForm = ({ reRenderParent }) => {
           handleChange={handleChange}
         />
         <FormInput
+          type="number"
+          name="duckCount"
+          data-pattern="[0-9]"
+          onKeyPress={handleValidation}
+          onPaste={handleValidation}
+          value={duckFormData.duckCount}
+          required
+          label="Number of Ducks"
+          helperText="How many ducks did you feed?"
+          handleChange={handleChange}
+        />
+        <FormInput
+          type="number"
+          name="foodAmountKg"
+          value={duckFormData.foodAmountKg}
+          required
+          label="Amount of Food (KG)"
+          helperText="How much food did you feed the ducks (KG)?"
+          handleChange={handleChange}
+        />
+        <FormInput
           type="datePicker"
           name="feedingTime"
           value={duckFormData.feedingTime}
           required
           label="Feeding Time"
-          dateTimePicker
           helperText="When did you feed the ducks?"
           handleChange={handleChange}
         />

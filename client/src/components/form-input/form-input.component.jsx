@@ -27,6 +27,7 @@ const FormInput = ({ handleChange, type, ...otherProps }) => {
     default:
       return (
         <TextField
+          type={type}
           className="form-input"
           onChange={handleChange}
           {...otherProps}
