@@ -5,7 +5,7 @@ import React from "react";
 import FormInput from "../form-input/form-input.component";
 import CustomButton from "../custom-button/custom-button.component";
 
-const DuckFeedingForm = () => {
+const DuckFeedingForm = ({ reRenderParent }) => {
   // For POST testing purposes
   const defaultValues = {
     _id: "",
@@ -38,7 +38,10 @@ const DuckFeedingForm = () => {
         credentials: "same-origin",
         body: body,
       });
-      if (res.status === 200) console.log("POST successful");
+      if (res.status === 200) {
+        console.log("POST successful");
+        reRenderParent();
+      }
     };
 
     try {
