@@ -2,6 +2,7 @@ import "./duck-feeding-form.styles.scss";
 
 // Component imports
 import FormInput from "../form-input/form-input.component";
+import CustomButton from "../custom-button/custom-button.component";
 
 const DuckFeedingForm = () => (
   <div className="">
@@ -24,6 +25,7 @@ const DuckFeedingForm = () => (
           console.log("Test");
         }}
       />
+      <CustomButton type="submit">Submit</CustomButton>
     </form>
   </div>
 );
