@@ -88,8 +88,11 @@ const DuckFeedingForm = ({
       ? (key = e.clipboardData.getData("text/plain"))
       : (key = e.key);
 
-    var intRegex = new RegExp(e.currentTarget.dataset.pattern);
-    if (!intRegex.test(key)) {
+    const newValue = e.target.value + key;
+    const pattern = e.currentTarget.dataset.pattern;
+    var intRegex = new RegExp(pattern);
+
+    if (!intRegex.test(newValue)) {
       e.preventDefault();
     }
   };
@@ -104,7 +107,7 @@ const DuckFeedingForm = ({
         <FormInput
           type="number"
           name="duckCount"
-          data-pattern="[0-9]"
+          data-pattern="^[1-9]\d*$"
           onKeyPress={handleValidation}
           onPaste={handleValidation}
           value={duckFormData.duckCount}
@@ -131,6 +134,9 @@ const DuckFeedingForm = ({
         <FormInput
           type="number"
           name="foodAmountKg"
+          data-pattern="^[1-9]\d*\.?\d*$"
+          onKeyPress={handleValidation}
+          onPaste={handleValidation}
           value={duckFormData.foodAmountKg}
           required
           label="Amount of Food (KG)"
