@@ -18,6 +18,9 @@ const DuckFeedingForm = ({
   variant,
 }) => {
   const handleChange = (e) => {
+    // Otherwise date picker throws an error if the focus is lost
+    if (!e) return;
+
     let name = "";
     let value = "";
 
