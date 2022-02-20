@@ -4,6 +4,7 @@ import "./collection.styles.scss";
 // Component imports
 import DuckFeedingItem from "../duck-feeding-item/duck-feeding-item.component";
 import DuckFeedingForm from "../duck-feeding-form/duck-feeding-form.component";
+import UpperPanel from "../upper-panel/upper-panel.component";
 
 // MaterialUI imports
 import Paper from "@mui/material/Paper";
@@ -53,6 +54,7 @@ const Collection = () => {
 
   return (
     <div>
+      <UpperPanel></UpperPanel>
       <DuckFeedingForm reRenderParent={handleRerender} />
 
       <Paper sx={{ width: "100%", overflow: "hidden" }}>
