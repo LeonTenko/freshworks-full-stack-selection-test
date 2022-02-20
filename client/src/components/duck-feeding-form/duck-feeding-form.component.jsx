@@ -9,52 +9,14 @@ import Button from "@mui/material/Button";
 import FormInput from "../form-input/form-input.component";
 import CustomButton from "../custom-button/custom-button.component";
 
-const DuckFeedingForm = ({ reRenderParent }) => {
-  const [duckFormData, setDuckFormData] = React.useState({
-    _id: "",
-    foodType: "",
-    duckCount: "",
-    foodAmountKg: "",
-    feedingLocation: "",
-    feedingTime: null,
-  });
-
-  // Just logging to see if the state is correct, remove later
-  React.useEffect(() => {
-    console.log(duckFormData);
-  }, [duckFormData]);
-
-  const handleSubmit = (e) => {
-    e.preventDefault();
-    console.log(duckFormData);
-
-    // POST to api/duckfeedings
-    var body = JSON.stringify(duckFormData);
-
-    const asyncCall = async () => {
-      const res = await fetch("/api/duckfeedings", {
-        method: "POST",
-        headers: {
-          "Content-Type": "application/json",
-        },
-        mode: "cors",
-        cache: "no-cache",
-        credentials: "same-origin",
-        body: body,
-      });
-      if (res.status === 200) {
-        console.log("POST successful");
-        reRenderParent();
-      }
-    };
-
-    try {
-      asyncCall();
-    } catch (err) {
-      console.log("API ERROR: " + err);
-    }
-  };
-
+const DuckFeedingForm = ({
+  duckFormData,
+  setDuckFormData,
+  handleSubmit,
+  margin,
+  fullWidth,
+  variant,
+}) => {
   const handleChange = (e) => {
     let name = "";
     let value = "";
@@ -86,60 +48,71 @@ const DuckFeedingForm = ({ reRenderParent }) => {
   };
 
   return (
-    <div className="">
-      <Box component="form" onSubmit={handleSubmit}>
-        <FormInput
-          type="number"
-          name="duckCount"
-          data-pattern="[0-9]"
-          onKeyPress={handleValidation}
-          onPaste={handleValidation}
-          value={duckFormData.duckCount}
-          required
-          label="Number of Ducks"
-          helperText="How many ducks did you feed?"
-          handleChange={handleChange}
-        />
-        <FormInput
-          type="text"
-          name="foodType"
-          value={duckFormData.foodType}
-          required
-          label="Food"
-          helperText="What food did you feed the ducks?"
-          handleChange={handleChange}
-        />
-        <FormInput
-          type="number"
-          name="foodAmountKg"
-          value={duckFormData.foodAmountKg}
-          required
-          label="Amount of Food (KG)"
-          helperText="How much food did you feed the ducks (KG)?"
-          handleChange={handleChange}
-        />
-        <FormInput
-          type="text"
-          name="feedingLocation"
-          value={duckFormData.feedingLocation}
-          required
-          label="Location"
-          helperText="Where did you feed the ducks?"
-          handleChange={handleChange}
-        />
-        <FormInput
-          type="datePicker"
-          name="feedingTime"
-          value={duckFormData.feedingTime}
-          required
-          label="Date/Time"
-          helperText="When did you feed the ducks?"
-          handleChange={handleChange}
-        />
-
-        <CustomButton type="submit">Submit</CustomButton>
-      </Box>
-    </div>
+    <Box component="form" onSubmit={handleSubmit}>
+      <FormInput
+        type="number"
+        name="duckCount"
+        data-pattern="[0-9]"
+        onKeyPress={handleValidation}
+        onPaste={handleValidation}
+        value={duckFormData.duckCount}
+        required
+        label="Number of Ducks"
+        helperText="How many ducks did you feed?"
+        handleChange={handleChange}
+        margin={margin}
+        fullWidth={fullWidth}
+        variant={variant}
+      />
+      <FormInput
+        type="text"
+        name="foodType"
+        value={duckFormData.foodType}
+        required
+        label="Food"
+        helperText="What food did you feed the ducks?"
+        handleChange={handleChange}
+        margin={margin}
+        fullWidth={fullWidth}
+        variant={variant}
+      />
+      <FormInput
+        type="number"
+        name="foodAmountKg"
+        value={duckFormData.foodAmountKg}
+        required
+        label="Amount of Food (KG)"
+        helperText="How much food did you feed the ducks (KG)?"
+        handleChange={handleChange}
+        margin={margin}
+        fullWidth={fullWidth}
+        variant={variant}
+      />
+      <FormInput
+        type="text"
+        name="feedingLocation"
+        value={duckFormData.feedingLocation}
+        required
+        label="Location"
+        helperText="Where did you feed the ducks?"
+        handleChange={handleChange}
+        margin={margin}
+        fullWidth={fullWidth}
+        variant={variant}
+      />
+      <FormInput
+        type="datePicker"
+        name="feedingTime"
+        value={duckFormData.feedingTime}
+        required
+        label="Date/Time"
+        helperText="When did you feed the ducks?"
+        handleChange={handleChange}
+        margin={margin}
+        fullWidth={fullWidth}
+        variant={variant}
+      />
+    </Box>
   );
 };
 

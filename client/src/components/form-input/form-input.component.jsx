@@ -12,13 +12,7 @@ const FormInput = ({ handleChange, type, ...otherProps }) => {
       return (
         <LocalizationProvider dateAdapter={AdapterDateFns}>
           <DateTimePicker
-            renderInput={(props) => (
-              <TextField
-                required={otherProps.required}
-                helperText={otherProps.helperText}
-                {...props}
-              />
-            )}
+            renderInput={(props) => <TextField {...otherProps} {...props} />}
             onChange={handleChange}
             {...otherProps}
           />
