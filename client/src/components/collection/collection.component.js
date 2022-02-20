@@ -5,6 +5,14 @@ import "./collection.styles.scss";
 import DuckFeedingItem from "../duck-feeding-item/duck-feeding-item.component";
 import DuckFeedingForm from "../duck-feeding-form/duck-feeding-form.component";
 
+// MaterialUI imports
+import Paper from "@mui/material/Paper";
+import Table from "@mui/material/Table";
+import TableBody from "@mui/material/TableBody";
+import TableContainer from "@mui/material/TableContainer";
+import TableHead from "@mui/material/TableHead";
+import TablePagination from "@mui/material/TablePagination";
+
 const Collection = () => {
   const [duckData, setDuckData] = React.useState(null);
   const [reRender, setReRender] = React.useState(false);
@@ -34,13 +42,28 @@ const Collection = () => {
   return (
     <div>
       <DuckFeedingForm reRenderParent={handleRerender} />
-      {duckData ? (
-        duckData.map(({ _id, ...otherProps }) => (
-          <DuckFeedingItem key={_id} _id={_id} {...otherProps} />
-        ))
-      ) : (
-        <p>The database is empty, please add some entries.</p>
-      )}
+
+      <Paper sx={{ width: "100%", overflow: "hidden" }}>
+        {duckData ? (
+          <TableContainer sx={{ maxHeight: "70vh" }}>
+            <Table stickyHeader aria-label="sticky table">
+              <TableHead></TableHead>
+              <TableBody>
+                {duckData.map(({ _id, ...otherProps }) => (
+                  <DuckFeedingItem
+                    key={_id}
+                    _id={_id}
+                    align="right"
+                    {...otherProps}
+                  />
+                ))}
+              </TableBody>
+            </Table>
+          </TableContainer>
+        ) : (
+          <h3>The database is empty, please add some entries.</h3>
+        )}
+      </Paper>
     </div>
   );
 };

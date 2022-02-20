@@ -89,15 +89,6 @@ const DuckFeedingForm = ({ reRenderParent }) => {
     <div className="">
       <Box component="form" onSubmit={handleSubmit}>
         <FormInput
-          type="text"
-          name="foodType"
-          value={duckFormData.foodType}
-          required
-          label="Food"
-          helperText="What food did you feed the ducks?"
-          handleChange={handleChange}
-        />
-        <FormInput
           type="number"
           name="duckCount"
           data-pattern="[0-9]"
@@ -107,6 +98,15 @@ const DuckFeedingForm = ({ reRenderParent }) => {
           required
           label="Number of Ducks"
           helperText="How many ducks did you feed?"
+          handleChange={handleChange}
+        />
+        <FormInput
+          type="text"
+          name="foodType"
+          value={duckFormData.foodType}
+          required
+          label="Food"
+          helperText="What food did you feed the ducks?"
           handleChange={handleChange}
         />
         <FormInput
