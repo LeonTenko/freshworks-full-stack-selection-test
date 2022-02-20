@@ -14,6 +14,7 @@ import TableHead from "@mui/material/TableHead";
 import TableCell from "@mui/material/TableCell";
 import TableRow from "@mui/material/TableRow";
 import TablePagination from "@mui/material/TablePagination";
+import Divider from "@mui/material/Divider";
 
 const Collection = () => {
   const [duckData, setDuckData] = React.useState([]);
@@ -54,7 +55,6 @@ const Collection = () => {
   return (
     <div>
       <FormPanel handleRerender={handleRerender} l />
-
       <Paper sx={{ width: "100%", overflow: "hidden" }}>
         {duckData ? (
           <TableContainer sx={{ maxHeight: "70vh" }}>

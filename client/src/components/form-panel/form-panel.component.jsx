@@ -76,7 +76,7 @@ const FormPanel = ({ handleRerender }) => {
         <div className="panel-text">
           <p>
             I am a scientist who is trying to understand how ducks are being fed
-            in parks around the world. Please aid my research and submit your
+            in parks around the world. Please help me with my research and add your
             most recent duck feeding experience.
           </p>
         </div>
@@ -98,7 +98,7 @@ const FormPanel = ({ handleRerender }) => {
           <DialogTitle>Add Entry</DialogTitle>
           <DialogContent>
             <DialogContentText>
-              Please fill out the relevant form fields below and click "Add".
+              Please fill out the relevant form fields below and click "Submit".
               Thank you for helping me with my research!
             </DialogContentText>
             <DuckFeedingForm

@@ -7,7 +7,7 @@ import Header from "./components/header/header.component";
 
 const App = () => {
   return (
-    <div>
+    <div className="app">
       <Header />
       <Routes>
         <Route path="/" element={<HomePage />} />
