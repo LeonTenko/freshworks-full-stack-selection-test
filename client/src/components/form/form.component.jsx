@@ -1,5 +1,9 @@
-import "./duck-feeding-form.styles.scss";
+// Asset imports
+import "./form.styles.scss";
+
+// Component imports
 import React from "react";
+import FormInput from "../form-input/form-input.component";
 
 // MaterialUI imports
 import Box from "@mui/material/Box";
@@ -8,16 +12,7 @@ import DialogActions from "@mui/material/DialogActions";
 import DialogContent from "@mui/material/DialogContent";
 import DialogContentText from "@mui/material/DialogContentText";
 
-// Component imports
-import FormInput from "../form-input/form-input.component";
-
-const DuckFeedingForm = ({
-  margin,
-  fullWidth,
-  variant,
-  handleRerender,
-  handleClose,
-}) => {
+const Form = ({ margin, fullWidth, variant, handleRerender, handleClose }) => {
   const defaultFormValues = {
     _id: "",
     foodType: "",
@@ -179,4 +174,4 @@ const DuckFeedingForm = ({
   );
 };
 
-export default DuckFeedingForm;
+export default Form;

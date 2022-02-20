@@ -1,3 +1,4 @@
+// Asset imports
 import "./homepage.styles.scss";
 
 // Component imports

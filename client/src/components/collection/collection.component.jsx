@@ -1,36 +1,19 @@
-import React from "react";
+// Asset imiports
 import "./collection.styles.scss";
 
 // Component imports
-import DuckFeedingItem from "../duck-feeding-item/duck-feeding-item.component";
+import React from "react";
 import FormPanel from "../form-panel/form-panel.component";
+import DataTable from "../data-table/data-table.component";
 
 // MaterialUI imports
 import Paper from "@mui/material/Paper";
-import Table from "@mui/material/Table";
-import TableBody from "@mui/material/TableBody";
-import TableContainer from "@mui/material/TableContainer";
-import TableHead from "@mui/material/TableHead";
-import TableCell from "@mui/material/TableCell";
-import TableRow from "@mui/material/TableRow";
-import TablePagination from "@mui/material/TablePagination";
-import Divider from "@mui/material/Divider";
 
 const Collection = () => {
   const [duckData, setDuckData] = React.useState([]);
   const [reRender, setReRender] = React.useState(false);
 
-  const [rowsPerPage, setRowsPerPage] = React.useState(10);
-  const [page, setPage] = React.useState(0);
-  const handleChangePage = (e, newPage) => {
-    setPage(newPage);
-  };
-  const handleChangeRowsPerPage = (e) => {
-    setRowsPerPage(e.target.value);
-    setPage(0);
-  };
-
-  // Tritter re-render every time someone adds a new
+  // Trigger re-render every time someone adds a new
   // duck feeding entry
   const handleRerender = () => {
     setReRender(!reRender);
@@ -57,43 +40,10 @@ const Collection = () => {
       <FormPanel handleRerender={handleRerender} l />
       <Paper sx={{ width: "100%", overflow: "hidden" }}>
         {duckData ? (
-          <TableContainer sx={{ maxHeight: "70vh" }}>
-            <Table stickyHeader aria-label="sticky table">
-              <TableHead>
-                <TableRow>
-                  <TableCell align="right">Ducks</TableCell>
-                  <TableCell align="right">Food</TableCell>
-                  <TableCell align="right">Amount</TableCell>
-                  <TableCell align="right">Location</TableCell>
-                  <TableCell align="right">Date/Time</TableCell>
-                </TableRow>
-              </TableHead>
-              <TableBody>
-                {duckData
-                  .slice(page * rowsPerPage, page * rowsPerPage + rowsPerPage)
-                  .map(({ _id, ...otherProps }) => (
-                    <DuckFeedingItem
-                      key={_id}
-                      _id={_id}
-                      align="right"
-                      {...otherProps}
-                    />
-                  ))}
-              </TableBody>
-            </Table>
-          </TableContainer>
+          <DataTable duckData={duckData} />
         ) : (
           <h3>The database is empty, please add some entries.</h3>
         )}
-        <TablePagination
-          rowsPerPageOptions={[10, 25, 100]}
-          component="div"
-          count={duckData.length}
-          rowsPerPage={rowsPerPage}
-          page={page}
-          onPageChange={handleChangePage}
-          onRowsPerPageChange={handleChangeRowsPerPage}
-        />
       </Paper>
     </div>
   );

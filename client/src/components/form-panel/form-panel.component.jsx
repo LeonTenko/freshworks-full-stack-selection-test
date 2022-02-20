@@ -1,8 +1,9 @@
-import React from "react";
+// Asset imports
 import "./form-panel.styles.scss";
 
 // Component imports
-import DuckFeedingForm from "../duck-feeding-form/duck-feeding-form.component";
+import Form from "../form/form.component";
+import React from "react";
 
 // Material UI imports
 import Paper from "@mui/material/Paper";
@@ -49,7 +50,7 @@ const FormPanel = ({ handleRerender }) => {
         </Button>
         <Dialog open={open} onClose={handleClose}>
           <DialogTitle>Add Entry</DialogTitle>
-          <DuckFeedingForm
+          <Form
             margin="dense"
             fullWidth
             variant="standard"

@@ -1,9 +1,10 @@
+// Asset imports
 import "./App.scss";
-import { Routes, Route } from "react-router-dom";
 
 // Component Imports
 import HomePage from "./pages/homepage/homepage.component";
 import Header from "./components/header/header.component";
+import { Routes, Route } from "react-router-dom";
 
 const App = () => {
   return (
