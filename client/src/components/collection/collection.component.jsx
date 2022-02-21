@@ -28,7 +28,6 @@ const Collection = () => {
 
     try {
       const data = await res.json();
-      console.log(data);
       setDuckData(data);
     } catch (err) {
       console.log(err);

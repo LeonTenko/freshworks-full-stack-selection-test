@@ -25,7 +25,6 @@ const Form = ({ margin, fullWidth, variant, handleRerender, handleClose }) => {
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    console.log(duckFormData);
 
     // POST to api/duckfeedings
     var body = JSON.stringify(duckFormData);
@@ -42,7 +41,6 @@ const Form = ({ margin, fullWidth, variant, handleRerender, handleClose }) => {
         body: body,
       });
       if (res.status === 200) {
-        console.log("POST successful");
         handleRerender();
         handleClose();
         setDuckFormData(defaultFormValues);
@@ -129,7 +127,7 @@ const Form = ({ margin, fullWidth, variant, handleRerender, handleClose }) => {
         <FormInput
           type="number"
           name="foodAmountKg"
-          data-pattern="^[1-9]\d*\.?\d*$"
+          data-pattern="^[0-9]\d*\.?\d*$"
           onKeyPress={handleValidation}
           onPaste={handleValidation}
           value={duckFormData.foodAmountKg}
